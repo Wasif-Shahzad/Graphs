@@ -10,15 +10,15 @@ using namespace std;
 #endif
 
 void strongly_connected_components(const vector<vector<int>>& adj,
-									vector<vector<int>>& components,
-									vector<vector<int>>& adj_condensed){
+					vector<vector<int>>& components,
+					vector<vector<int>>& adj_condensed){
 	int n = adj.size();
 	vector<bool> vis(n + 1, false);
 	components.clear(); adj_condensed.clear();
 	vector<int> order;
 	auto dfs = [&] (int v, 
-					const vector<vector<int>>& adj_trav, 
-					vector<int>& output, auto&& dfs) -> void{
+			const vector<vector<int>>& adj_trav, 
+			vector<int>& output, auto&& dfs) -> void{
 		vis[v] = 1;
 		for(auto c: adj_trav[v]){
 			if(vis[c]) continue;
